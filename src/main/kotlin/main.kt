@@ -3,7 +3,7 @@ fun main() {
     val previousPayments = 114_000_00
     val transfer = 80_000_00
 
-    val commission = calculateCommission(cardType = "VK_Pay", previousPayments, transfer)
+    val commission = calculateCommission(cardType = "VK_Pay", previousPayments = 0, transfer)
     println(
         """|Платежная система: $cardType.
         |Предыдущие переводы: ${previousPayments.toDouble() / 100} рублей.
