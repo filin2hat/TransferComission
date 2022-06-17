@@ -1,3 +1,14 @@
+const val dayLimit = 150_000_00
+const val monthLimit = 600_000_00
+const val dayLimitVK = 15_000_00
+const val monthLimitVK = 40_000_00
+const val minCommission = 35_00
+const val percentCommission = 0.0075
+const val promoCommission = 20_00
+const val promoPercentCommission = 0.006
+const val minPromoTransfer = 300_00
+const val maxPromoPreviousPayments = 75_000_00
+
 fun main() {
     val cardType = "MIR"
     val previousPayments = 114_000_00
@@ -14,19 +25,6 @@ fun main() {
 }
 
 fun calculateCommission(cardType: String, previousPayments: Int, transfer: Int): Int {
-    val dayLimit = 150_000_00
-    val monthLimit = 600_000_00
-    val dayLimitVK = 15_000_00
-    val monthLimitVK = 40_000_00
-
-    val minCommission = 35_00
-    val percentCommission = 0.0075
-    val promoCommission = 20_00
-    val promoPercentCommission = 0.006
-
-    val minPromoTransfer = 300_00
-    val maxPromoPreviousPayments = 75_000_00
-
     when {
         //проверка лимитов VK Pay
         cardType == "VK_Pay" && transfer > dayLimitVK -> println("!!!Превышен дневной лимит по карте VK Pay!!!")
