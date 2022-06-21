@@ -90,6 +90,6 @@ class MainKtTest {
         val transfer = 10_000_00
 
         val result = calculateCommission(cardType, previousPayments, transfer)
-        assertEquals(0, result)
+        assertEquals(666, result)
     }
 }
