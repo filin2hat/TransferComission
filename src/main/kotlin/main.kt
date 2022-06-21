@@ -10,11 +10,11 @@ const val minPromoTransfer = 300_00
 const val maxPromoPreviousPayments = 75_000_00
 
 fun main() {
-    val cardType = "MIR"
-    val previousPayments = 114_000_00
-    val transfer = 80_000_00
+    val cardType = "MAESTRO"
+    val previousPayments = 80_000_00
+    val transfer = 160_000_00
 
-    val commission = calculateCommission(cardType = "VK_Pay", previousPayments = 0, transfer)
+    val commission = calculateCommission(cardType, previousPayments, transfer)
     println(
         """|Платежная система: $cardType.
         |Предыдущие переводы: ${previousPayments.toDouble() / 100} рублей.
@@ -24,11 +24,12 @@ fun main() {
     )
 }
 
-fun calculateCommission(cardType: String, previousPayments: Int, transfer: Int): Int {
+fun calculateCommission(cardType: String = "VK_Pay", previousPayments: Int = 0, transfer: Int): Int {
     when {
         //проверка лимитов VK Pay
         cardType == "VK_Pay" && transfer > dayLimitVK -> println("!!!Превышен дневной лимит по карте VK Pay!!!")
         cardType == "VK_Pay" && (previousPayments + transfer) > monthLimitVK -> println("!!!Превышен месячный лимит по карте VK Pay!!!")
+
         //проверка лимитов остальных карт
         transfer > dayLimit -> println("Превышен дневной лимит по карте $cardType")
         (previousPayments + transfer) > monthLimit -> println("Превышен месячный лимит по карте $cardType")
