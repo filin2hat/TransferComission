@@ -2,6 +2,10 @@ import org.junit.Assert.assertEquals
 import org.junit.Test
 
 class MainKtTest {
+    @Test
+    fun testMain() {
+        main()
+    }
 
     @Test
     fun calculateCommissionMastercardPromo() {
